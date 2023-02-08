@@ -1,0 +1,36 @@
+services:
+  postgres:
+    image: 'postgres:13.6'
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mzt
+    volumes:
+      - pgdata-dev:/var/lib/postgresql/data
+    networks:
+      - sail
+  laravel:
+    build:
+      context: ./vendor/laravel/sail/runtimes/8.2
+      dockerfile: Dockerfile
+      args:
+        WWWGROUP: '1000'
+    image: sail-8.2/app
+    ports:
+      - 8000:80
+    environment:
+      WWWUSER: '1000'
+      LARAVEL_SAIL: 1
+    volumes:
+      - '.:/var/www/html'
+    networks:
+      - sail
+
+volumes:
+  pgdata-dev:
+
+networks:
+  sail:
+    driver: bridge
