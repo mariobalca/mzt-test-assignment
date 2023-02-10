@@ -2,16 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Candidate;
-use App\Models\Company;
+use App\Services\CandidateService;
 
 class CandidateController extends Controller
 {
+    private CandidateService $candidateService;
+
+    public function __construct(CandidateService $candidateService)
+    {
+        $this->candidateService = $candidateService;
+    }
+
     public function index(){
-    $candidates = Candidate::all();
-    $coins = Company::find(1)->coins;
-    return view('candidates.index', compact('candidates', 'coins'));
-}
+        $candidates = $this->candidateService->getAll();
+
+        return view('candidates.index', compact('candidates'));
+    }
 
     public function contact(){
         // @todo
