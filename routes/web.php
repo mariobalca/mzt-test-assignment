@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\CandidateController;
+use App\Http\Controllers\Web\CandidateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,8 +18,4 @@ Route::get('/', function () {
     return view('homepage');
 });
 
-Route::prefix('candidates')->group(function () {
-    Route::get('/', [CandidateController::class, 'index'])->name('list');
-    Route::post('/{id}/contact', [CandidateController::class, 'contact'])->name('contact');
-    Route::put('/{id}/hire', [CandidateController::class, 'hire'])->name('hire');
-});
+Route::get('/candidates', [CandidateController::class, 'index'])->name('list');

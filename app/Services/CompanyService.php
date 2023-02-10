@@ -12,8 +12,9 @@ class CompanyService {
         $this->model = $model;
     }
 
-    public function find($id)
+    public function get()
     {
-        return $this->model->find($id);
+        // This should actually return the authenticated company, once authentication is done
+        return $this->model->find(1);
     }
 }

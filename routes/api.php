@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\API\CompanyAPIController;
+use App\Http\Controllers\API\CandidateAPIController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('company',[ CompanyController::class, 'get']);
+Route::get('company',[ CompanyAPIController::class, 'get']);
+
+Route::prefix('candidate')->group(function () {
+    Route::post('/{candidate}/contact', [CandidateAPIController::class, 'contact'])->name('contact');
+    Route::put('/{candidate}/hire', [CandidateAPIController::class, 'hire'])->name('hire');
+});

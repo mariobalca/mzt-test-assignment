@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
+use App\Http\Controllers\Controller;
+use App\Models\Candidate;
 use App\Services\CandidateService;
 
 class CandidateController extends Controller
@@ -13,19 +15,10 @@ class CandidateController extends Controller
         $this->candidateService = $candidateService;
     }
 
-    public function index(){
+    public function index()
+    {
         $candidates = $this->candidateService->getAll();
 
         return view('candidates.index', compact('candidates'));
-    }
-
-    public function contact(){
-        // @todo
-        // Your code goes here...
-    }
-
-    public function hire(){
-        // @todo
-        // Your code goes here...
     }
 }

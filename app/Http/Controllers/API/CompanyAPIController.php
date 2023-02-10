@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
-use App\Models\Company;
+use App\Http\Controllers\Controller;
 use App\Services\CompanyService;
 use Illuminate\Http\Response;
 
-class CompanyController extends Controller
+class CompanyAPIController extends Controller
 {
     private CompanyService $companyService;
 
@@ -21,7 +21,7 @@ class CompanyController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|Response
      */
     public function get() {
-        $company = $this->companyService->find(1);
+        $company = $this->companyService->get();
         return response($company, 200)->header('Content-Type', 'application/json');
     }
 }
