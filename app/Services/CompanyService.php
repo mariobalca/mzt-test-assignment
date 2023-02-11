@@ -5,16 +5,14 @@ use App\Models\Company;
 
 class CompanyService {
 
-    private $model;
-
-    public function __construct(Company $model)
+    /**
+     * Gets the first company of the database
+     * (Once authentication is done, this should return the authenticated company)
+     *
+     * @return Company
+     */
+    public function get(): Company
     {
-        $this->model = $model;
-    }
-
-    public function get()
-    {
-        // This should actually return the authenticated company, once authentication is done
-        return $this->model->find(1);
+        return Company::find(1);
     }
 }

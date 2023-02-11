@@ -21,6 +21,7 @@ class CandidateFactory extends Factory
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'description' => $this->faker->text,
+            'hired' => false,
             'strengths' => json_encode(['PHP', 'Laravel', 'Vue.js', 'TailwindCSS']),
         ];
     }
