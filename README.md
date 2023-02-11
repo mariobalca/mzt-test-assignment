@@ -39,6 +39,6 @@ The app will be accessible at http://localhost:800
 docker compose exec laravel [command]
 ```
 
-Which could be `php artisan migrate --seed`,  `docker compose exec laravel php artisan test`, or `docker compose exec laravel npm run watch` for example.
+Which could be `php artisan migrate --seed`,  `php artisan test`, or `npm run watch` for example.
 
 And that should be it 🎉
