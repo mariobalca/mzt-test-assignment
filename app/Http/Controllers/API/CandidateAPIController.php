@@ -23,6 +23,7 @@ class CandidateAPIController extends Controller
     {
         try {
             $this->candidateService->contact($candidate);
+            return response("Candidate contacted", 200);
         } catch (\Exception $exception) {
             return response($exception->getMessage(), 403);
         }
@@ -32,6 +33,7 @@ class CandidateAPIController extends Controller
     {
         try {
             $this->candidateService->hire($candidate);
+            return response("Candidate hired", 200);
         } catch (\Exception $exception) {
             return response($exception->getMessage(), 403);
         }
